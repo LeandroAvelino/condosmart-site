@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CondoSmart — automação financeira para síndicos</title>
+<meta name="description" content="Notas fiscais, boletos, extrato bancário e prestação de contas organizados automaticamente, com um assistente que responde pelo celular.">
+<style>
+  :root {
+    --bg: #f7f8fa; --surface: #ffffff; --text: #1b2430; --muted: #566274; --line: #dde2ea;
+    --accent: #0f766e; --accent-ink: #ffffff; --soft: #e6f4f2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0e1319; --surface: #161d26; --text: #e8edf3; --muted: #9aa7b8; --line: #263140; --accent: #2dd4bf; --accent-ink: #062a27; --soft: #12302d; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.1rem; }
+  header { padding: 1.1rem 0; border-bottom: 1px solid var(--line); background: var(--surface); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .marca { font-weight: 700; font-size: 1.15rem; letter-spacing: .2px; }
+  .marca span { color: var(--accent); }
+  nav a { color: var(--muted); text-decoration: none; margin-left: 1.1rem; font-size: .95rem; }
+  nav a:hover { color: var(--text); }
+  .hero { padding: 3.2rem 0 2.6rem; }
+  .hero h1 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); line-height: 1.2; margin: 0 0 1rem; max-width: 40rem; }
+  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 40rem; margin: 0 0 1.4rem; }
+  .selo { display: inline-block; background: var(--soft); color: var(--accent); border-radius: 999px; padding: .2rem .8rem; font-size: .85rem; font-weight: 600; margin-bottom: 1rem; }
+  section { padding: 2.4rem 0; }
+  section h2 { font-size: 1.5rem; margin: 0 0 .4rem; }
+  .sub { color: var(--muted); margin: 0 0 1.4rem; max-width: 42rem; }
+  .grade { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr)); }
+  .cartao { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.2rem; }
+  .cartao h3 { margin: 0 0 .35rem; font-size: 1.05rem; }
+  .cartao p { margin: 0; color: var(--muted); font-size: .96rem; }
+  .passos { counter-reset: p; list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+  .passos li { counter-increment: p; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.2rem 1.1rem 3.4rem; position: relative; }
+  .passos li::before { content: counter(p); position: absolute; left: 1rem; top: 1rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-weight: 700; display: grid; place-items: center; font-size: .95rem; }
+  .passos strong { display: block; margin-bottom: .2rem; }
+  .passos span { color: var(--muted); font-size: .96rem; }
+  .lista { list-style: none; padding: 0; margin: 0; display: grid; gap: .7rem; }
+  .lista li { padding-left: 1.6rem; position: relative; }
+  .lista li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  .faixa { background: var(--soft); border: 1px solid var(--line); border-radius: 14px; padding: 1.4rem 1.4rem; }
+  .breve { border-style: dashed; }
+  .tag { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--accent); }
+  footer { border-top: 1px solid var(--line); padding: 1.6rem 0 2.4rem; color: var(--muted); font-size: .92rem; background: var(--surface); }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="marca">Condo<span>Smart</span></div>
+    <nav>
+      <a href="#recursos">Recursos</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#privacidade">Privacidade</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div class="selo">Para síndicos e administradores</div>
+    <h1>A parte chata das contas do condomínio, resolvida sozinha.</h1>
+    <p>Notas fiscais, boletos, recibos e extrato bancário organizados automaticamente, com um assistente que responde pelo celular e avisa antes de cada vencimento.</p>
+  </div>
+
+  <section id="recursos">
+    <div class="wrap">
+      <h2>O que ele faz</h2>
+      <p class="sub">Menos digitação, menos papel perdido e as respostas na hora em que você precisa delas.</p>
+      <div class="grade">
+        <div class="cartao">
+          <h3>Lê notas, boletos e recibos</h3>
+          <p>Envie uma foto, um PDF ou deixe chegar por e-mail. O sistema identifica o emissor, o valor, as datas e a forma de pagamento, e só pergunta o que não conseguiu ler.</p>
+        </div>
+        <div class="cartao">
+          <h3>Arquiva tudo no lugar certo</h3>
+          <p>Cada arquivo é guardado em pastas organizadas por ano e mês, com o registro dos dados em um banco de consulta rápida. Nada de procurar documento em e-mail antigo.</p>
+        </div>
+        <div class="cartao">
+          <h3>Avisa os vencimentos</h3>
+          <p>Receba no celular a lista de boletos vencidos e dos que vencem nos próximos dias, com o valor e o link do PDF. Um toque em “Já paguei” e o aviso para de repetir.</p>
+        </div>
+        <div class="cartao">
+          <h3>Responde perguntas em linguagem natural</h3>
+          <p>“Quanto gastamos com limpeza em setembro?”, “Qual o Pix do boleto da internet?”, “Manda o PDF dessa nota.” Respostas curtas, com os números conferidos no banco de dados.</p>
+        </div>
+        <div class="cartao">
+          <h3>Confere o extrato com os boletos</h3>
+          <p>Importe o extrato do banco e veja o que foi realmente pago, o que está em aberto, o que saiu sem boleto cadastrado e quanto foi multa ou juros.</p>
+        </div>
+        <div class="cartao">
+          <h3>Vários documentos de uma vez</h3>
+          <p>Envie vários arquivos em sequência ou um PDF com vários boletos. Eles entram numa fila, são tratados um a um e podem ser cancelados por comando.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona">
+    <div class="wrap">
+      <h2>Como funciona</h2>
+      <p class="sub">Você continua usando o aplicativo de mensagens que já conhece.</p>
+      <ol class="passos">
+        <li><strong>Você envia</strong><span>A foto ou o PDF do documento, ou o arquivo do extrato, pelo celular. Os documentos que chegam por e-mail são recolhidos sozinhos.</span></li>
+        <li><strong>O sistema lê e confere</strong><span>Valida chaves de nota, linha digitável e datas, e pede confirmação antes de gravar qualquer coisa duvidosa.</span></li>
+        <li><strong>Tudo fica organizado</strong><span>O arquivo vai para a pasta certa, os dados vão para o banco e você pode perguntar sobre eles quando quiser.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="beneficios">
+    <div class="wrap">
+      <h2>O que muda para quem administra</h2>
+      <ul class="lista">
+        <li><strong>Tempo de volta:</strong> o cadastro e a conferência manual deixam de consumir as noites de fim de mês.</li>
+        <li><strong>Menos atrasos e multas:</strong> o aviso de vencimento chega antes, todos os dias, até o boleto ser marcado como pago.</li>
+        <li><strong>Prestação de contas mais simples:</strong> totais por fornecedor, por período e por tipo de despesa em segundos, sempre com os dados de origem.</li>
+        <li><strong>Transparência:</strong> cada pagamento fica ligado ao lançamento do banco, e a diferença entre o valor cobrado e o pago é explicada.</li>
+        <li><strong>Menos erros:</strong> números conferidos por regras (dígitos verificadores, somas, datas) em vez de depender só de digitação.</li>
+        <li><strong>Registro seguro e rastreável:</strong> o histórico de cada documento e de cada gravação fica guardado.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="faixa breve">
+        <div class="tag">Em desenvolvimento</div>
+        <h2 style="margin-top:.2rem">Atendimento aos moradores pelo WhatsApp</h2>
+        <p class="sub" style="margin-bottom:0">Moradores poderão tirar dúvidas simples, como avisos, regras e a prestação de contas do mês, enviando um comando a um número oficial do condomínio. Mensagens comuns continuam sendo atendidas por uma pessoa, e cada morador vê apenas os dados que lhe pertencem.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="wrap">
+      <div class="faixa">
+        <h2 style="margin-top:0">Quer saber mais?</h2>
+        <p class="sub" style="margin-bottom:.6rem">Conte como é a rotina financeira do seu condomínio e veja como a automação pode ajudar.</p>
+        <p style="margin:0"><a href="mailto:contato@condosmart.org" style="color:var(--accent);font-weight:600">contato@condosmart.org</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacidade">
+    <div class="wrap">
+      <h2>Privacidade e segurança</h2>
+      <p class="sub">Os dados financeiros do condomínio ficam sob controle da administração.</p>
+      <ul class="lista">
+        <li>Acesso restrito, com credenciais separadas para cada função e sem exposição de senhas.</li>
+        <li>Monitoramento contínuo com alerta quando algo falha.</li>
+        <li>Respeito à LGPD: finalidade clara, retenção limitada e direito de acesso e exclusão.</li>
+      </ul>
+      <p style="margin-top:1.2rem"><a href="https://privacidade.condosmart.org/">Leia a política de privacidade</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>CondoSmart</strong> · automação financeira para condomínios</div>
+    <div style="margin-top:.4rem"><a href="mailto:contato@condosmart.org">contato@condosmart.org</a> · <a href="https://privacidade.condosmart.org/">Política de privacidade</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
